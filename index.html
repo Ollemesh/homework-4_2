@@ -31,14 +31,17 @@
 
 	downloadCitiesButton.addEventListener('click', () => {
 		getAjax('https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json')
-		.then((response)=>{
+		.then((response) => {
 			let citiesNames = getSortedCitiesNames(JSON.parse(response));
 			citiesNames.forEach((cityName) => {
 				let div = document.createElement('div');
 				div.innerText = cityName;
 				container.appendChild(div);
 			}); 
-		})
+		},
+		() => {
+			console.log('все сломалось, выпей водочки');
+		});
 	});
 	</script>
 </body>
